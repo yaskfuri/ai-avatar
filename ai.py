@@ -1,7 +1,7 @@
 from transformers import pipeline
 
-# Load the sentiment-analysis pipeline
-sentiment_analysis = pipeline("sentiment-analysis")
+# Load a sentiment-analysis pipeline with a model that includes neutral sentiment
+sentiment_analysis = pipeline("sentiment-analysis", model="cardiffnlp/twitter-roberta-base-sentiment-latest")
 
 # Example sentences to analyze
 sentences = [
@@ -16,7 +16,7 @@ sentences = [
 # Analyze and print sentiment for each sentence
 for sentence in sentences:
     result = sentiment_analysis(sentence)[0]  # Get the first result
-    label = result['label']                    # Sentiment label (e.g., POSITIVE, NEGATIVE)
+    label = result['label']                    # Sentiment label (e.g., POSITIVE, NEUTRAL, NEGATIVE)
     score = result['score']                    # Confidence score
     
     # Print the results
